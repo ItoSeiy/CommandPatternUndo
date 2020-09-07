@@ -21,7 +21,7 @@ public class CommandManager : MonoBehaviour
 
 	private List<ICommand> _commandBuffer = new List<ICommand>();
 
-	int nowIndex = -1;
+	int nowIndex = 0;
 
 	private void Awake()
 	{
@@ -30,22 +30,28 @@ public class CommandManager : MonoBehaviour
 
 	public void AddCommand(ICommand command)
 	{
+		if (_commandBuffer.Count > nowIndex) {
+			_commandBuffer.RemoveRange(nowIndex, _commandBuffer.Count - nowIndex);
+		}
+
 		_commandBuffer.Add(command);
 		nowIndex++;
 	}
 
 	public void Undo()
 	{
-		if (nowIndex == -1)return;
-		_commandBuffer[nowIndex].Undo();
+		if (nowIndex == 0) return;
 		nowIndex--;
+		_commandBuffer[nowIndex].Undo();
+		Debug.Log("undo :" + nowIndex);
 	}
 
 	public void Redo()
 	{
-		if (_commandBuffer.Count < nowIndex + 1) return;
+		if (_commandBuffer.Count == nowIndex) return;
 		_commandBuffer[nowIndex].Execute();
 		nowIndex++;
+		Debug.Log("Redo :" + nowIndex);
 	}
 
 }

@@ -13,15 +13,10 @@ public class SetColor : MonoBehaviour
 			return renderer.material;
 		}
 	}
-	Color meshColor {
-		get {
-			return meshMaterial.color;
-		}
-	}
 
 	public void SetBlue()
 	{
-		var command = new SetBlueCommand(meshColor, meshMaterial);
+		var command = new SetBlueCommand(meshMaterial);
 		command.Execute();
 		CommandManager.Instance.AddCommand(command);
 	}
@@ -35,20 +30,9 @@ public class SetColor : MonoBehaviour
 
 	public void SetGreen()
 	{
-		var command = new SetGreenCommand(meshColor, meshMaterial);
+		var command = new SetGreenCommand(meshMaterial);
 		command.Execute();
 		CommandManager.Instance.AddCommand(command);
 	}
 
-	// Start is called before the first frame update
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
 }

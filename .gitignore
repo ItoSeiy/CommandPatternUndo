@@ -30,3 +30,6 @@ sysinfo.txt
 
 # Builds
 *.apk
+.vsconfig
+.vs/CommandPatternUndo/v17/fileList.bin
+UserSettings/EditorUserSettings.asset

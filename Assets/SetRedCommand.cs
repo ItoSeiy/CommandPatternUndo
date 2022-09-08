@@ -6,22 +6,25 @@ public class SetRedCommand : ICommand
 {
 	private Material _target;
 
-	public SetRedCommand(Material target)
+	private float _colorValue;
+
+	public SetRedCommand(Material target, float colorValue)
 	{
 		_target = target;
+		_colorValue = colorValue;
 	}
 
 	public void Execute()
 	{
 		var setColor =_target.color;
-		setColor.r += 0.2f;
+		setColor.r += _colorValue;
 		_target.color = setColor;
 	}
 			   
 	public void Undo()
 	{
 		var setColor = _target.color;
-		setColor.r -= 0.2f;
+		setColor.r -= _colorValue;
 		_target.color = setColor;
 	}
 

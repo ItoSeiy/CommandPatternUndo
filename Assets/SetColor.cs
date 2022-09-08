@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetColor : MonoBehaviour
 {
@@ -14,23 +15,23 @@ public class SetColor : MonoBehaviour
 		}
 	}
 
-	public void SetBlue()
+	public void SetBlue(float targetColorValue)
 	{
-		var command = new SetBlueCommand(meshMaterial);
+		var command = new SetBlueCommand(meshMaterial, targetColorValue);
 		command.Execute();
 		CommandManager.Instance.AddCommand(command);
 	}
 
-	public void SetRed()
+	public void SetRed(float targetColorValue)
 	{
-		var command = new SetRedCommand(meshMaterial);
+		var command = new SetRedCommand(meshMaterial, targetColorValue);
 		command.Execute();
 		CommandManager.Instance.AddCommand(command);
 	}
 
-	public void SetGreen()
+	public void SetGreen(float targetColorValue)
 	{
-		var command = new SetGreenCommand(meshMaterial);
+		var command = new SetGreenCommand(meshMaterial, targetColorValue);
 		command.Execute();
 		CommandManager.Instance.AddCommand(command);
 	}

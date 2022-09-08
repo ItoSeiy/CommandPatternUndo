@@ -38,6 +38,22 @@ public class CommandManager : MonoBehaviour
 		nowIndex++;
 	}
 
+	public void UndoAll()
+    {
+		while(0 < nowIndex)
+        {
+			Undo();
+        }
+    }
+
+	public void RedoAll()
+    {
+		while(_commandBuffer.Count > nowIndex)
+        {
+			Redo();
+        }
+    }
+
 	public void Undo()
 	{
 		if (nowIndex == 0) return;
